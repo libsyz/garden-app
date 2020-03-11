@@ -2,6 +2,7 @@ class GardensController < ApplicationController
   before_action :set_garden
 
   def show
+    @plant = Plant.new
   end
 
 

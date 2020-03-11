@@ -6,3 +6,30 @@
     <h1> <%= @garden.name %></h1>
   </div>
 </div>
+
+<div class="container mt-3">
+  <div class="row">
+    <% @garden.plants.each do |plant| %>
+    <div class="col-3 m-2">
+      <div class="card text-center">
+        <img src=<%= plant.img_url %> class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"> <%= plant.name %></h5>
+          <%= link_to "Delete", [@garden, plant], method: :delete, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+
+  <!-- I would like to have a form to add new plants to this garden -->
+
+  <%= simple_form_for [@garden, @plant] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :img_url %>
+  <%= f.button :submit %>
+<% end %>
+
+
+</div>
